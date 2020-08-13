@@ -1,13 +1,29 @@
-import React from 'react';
-import './counter.css';
+import React, { Component } from "react";
+import "./counter.css";
 
-function Counter(){
+class Counter extends Component {
+  // Define the initial state in the constructor
 
-    return(
-        <div className= "thirdComponent">
-            <button>+1</button>
-            <span className = "count"> 0</span>
-        </div>
-    )
+  constructor() {
+    super();
+    this.state = { counter: 0 };
+
+    this.increment = this.increment.bind(this);
+  }
+
+  increment() {
+    //Update State - counter++
+    this.setState({ counter: this.state.counter + 1 });
+  }
+
+  render() {
+    return (
+      <div className="counter">
+        <button onClick={this.increment}>+1</button>
+        <span className="count"> {this.state.counter}</span>
+      </div>
+    );
+  }
 }
+
 export default Counter;
